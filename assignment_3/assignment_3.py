@@ -19,23 +19,23 @@ n_t[0] = n_t_0
 
 fig1 = plt.figure()
 ax_bif = fig1.add_subplot(111)
-ax_bif.set_xlabel('Parameter R')
-ax_bif.set_ylabel('Steady state N*')
-ax_bif.set_xlim([0, n_timesteps - 1])
+ax_bif.set_xlabel('Number of offspring per individual, R')
+ax_bif.set_ylabel('Steady state population, N*')
+ax_bif.set_xlim([0, (n_timesteps - 1) * 0.1])
 ax_bif.grid()
 fig2 = plt.figure()
 ax_time = fig2.add_subplot(111)
-ax_time.set_xlabel('Simulation steps ')
-ax_time.set_ylabel('Population size N')
+ax_time.set_xlabel('Simulation steps')
+ax_time.set_ylabel('Population size, N')
 ax_time.grid()
-ax_time.set_xlim([0, 50])
+ax_time.set_xlim([0, 30])
 
 for R in range(n_timesteps):
     print(R)
     for i in range(n_timesteps - 1):
 
         n_t[i + 1] = calc_next_population(n_t[i], R * 0.1, alpha)
-    ax_bif.plot([R] * 100, n_t[-100:], '.', markersize=0.2, color='blue')
+    ax_bif.plot([R * 0.1] * 100, n_t[-100:], '.', markersize=0.2, color='blue')
 
 for R in R_index:
     for i in range(n_timesteps - 1):
